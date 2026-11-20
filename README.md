@@ -12,7 +12,33 @@ To Develop a python program to Plot a time series data (population/ market price
 5. Display the graph.
 # PROGRAM:
 
+```
+from matplotlib import pyplot as plt
+import pandas as pd
 
+df = pd.read_csv("/content/Nile.csv")
+
+df['time'] = pd.to_datetime(df['time'], format='%Y')
+df.set_index('time', inplace=True)
+
+df['Nile'].plot(
+    kind='line',
+    figsize=(12, 6),
+    color='black',
+    linewidth=1.8,
+    label='River Flow'
+)
+
+plt.title('Time Series Plot of Nile River Flow',
+          fontsize=14, fontweight='bold')
+plt.xlabel('Year')
+plt.ylabel('River Flow')
+plt.legend()
+plt.grid(True, linestyle='--', alpha=0.5)
+plt.tight_layout()
+plt.show()
+
+```
 
 
 
@@ -24,6 +50,7 @@ To Develop a python program to Plot a time series data (population/ market price
 
 # OUTPUT:
 
+<img width="850" height="365" alt="image" src="https://github.com/user-attachments/assets/c00460e0-e87e-41bf-a944-cc39e8d71786" />
 
 
 
